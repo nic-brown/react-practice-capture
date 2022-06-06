@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { MovieState } from "../MovieState";
+// Animations
+import { motion, AnimatePresence } from "framer-motion";
+import { pageAnimation } from "../animation";
 
 const MovieDetail = () => {
   //const history = useNavigate();
   const location = useLocation();
   const url = location.pathname;
   // console.clear();
-  // console.log(url);
+  console.log(location);
 
   const [movies, setMovies] = useState(MovieState);
   const [movie, setMovie] = useState(null);
@@ -23,8 +26,14 @@ const MovieDetail = () => {
     // here we do a check: if a movie isn't available yet, don't render anything out then
     <>
       {/* only when the movie is available render out the following  content */}
+
       {movie && (
-        <Details>
+        <Details
+          variants={pageAnimation}
+          initial="hidden"
+          animate="show"
+          exit="exit"
+        >
           <Headline>
             <h2>{movie.title}</h2>
             <img src={movie.mainImg} alt={movie.title} />
@@ -47,7 +56,7 @@ const MovieDetail = () => {
   );
 };
 
-const Details = styled.div`
+const Details = styled(motion.div)`
   color: #fff;
 `;
 const Headline = styled.div`

@@ -49,6 +49,17 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.4rem;
     line-height: 150%;
   }
+  .scroll-progress{
+    position: fixed;
+    z-index: 100;
+    background: #23d997;
+    transition: .3s ease;
+    width:  100%;
+    height: 6px;
+    left: 0; 
+    top: 0;
+    transform-origin: left  top;
+  }
 `;
 
 export default GlobalStyle;
