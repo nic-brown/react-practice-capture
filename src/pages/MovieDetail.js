@@ -1,27 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
-import { MovieState } from "../MovieState";
+// import { MovieState } from "../MovieState";
 // Animations
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { pageAnimation } from "../animation";
 
-const MovieDetail = () => {
+const MovieDetail = ({ movies, movie, setMovie }) => {
   //const history = useNavigate();
   const location = useLocation();
   const url = location.pathname;
-  // console.clear();
-  console.log(location);
 
-  const [movies, setMovies] = useState(MovieState);
-  const [movie, setMovie] = useState(null);
+  // const [movies, setMovies] = useState(MovieState);
+  // const [movie, setMovie] = useState(null);
 
   useEffect(() => {
     const currentMovie = movies.filter((stateMovie) => stateMovie.url === url);
-    console.log(currentMovie);
-
     setMovie(currentMovie[0]);
-  }, [movies, url]);
+  }, [movies, url, setMovie]);
+
+  //React Hook useEffect has a missing dependency: 'setMovie'. Either include it or remove the dependency array. If 'setMovie' changes too often, find the parent component that defines it and wrap that definition in useCallback  react-hooks/exhaustive-deps
+
   return (
     // here we do a check: if a movie isn't available yet, don't render anything out then
     <>
