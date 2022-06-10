@@ -60,6 +60,10 @@ const GlobalStyle = createGlobalStyle`
     top: 0;
     transform-origin: left  top;
   }
+  .crow-svg{
+    width: 500px;
+    opacity: 0.4;
+  }
 `;
 
 export default GlobalStyle;
